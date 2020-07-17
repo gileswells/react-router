@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Route from './Route'
-import Link from './Link'
+import React from "react"
+import PropTypes from "prop-types"
+import Route from "./Route"
+import Link from "./Link"
 
 /**
  * A <Link> wrapper that knows if it's "active" or not.
@@ -20,7 +20,7 @@ const NavLink = ({
   ...rest
 }) => (
   <Route
-    path={typeof to === 'object' ? to.pathname : to}
+    path={typeof to === "object" ? to.pathname : to}
     exact={exact}
     strict={strict}
     location={location}
@@ -30,7 +30,11 @@ const NavLink = ({
       return (
         <Link
           to={to}
-          className={isActive ? [ className, activeClassName ].filter(i => i).join(' ') : className}
+          className={
+            isActive
+              ? [className, activeClassName].filter((i) => i).join(" ")
+              : className
+          }
           style={isActive ? { ...style, ...activeStyle } : style}
           aria-current={isActive && ariaCurrent}
           {...rest}
@@ -50,12 +54,12 @@ NavLink.propTypes = {
   activeStyle: PropTypes.object,
   style: PropTypes.object,
   isActive: PropTypes.func,
-  ariaCurrent: PropTypes.oneOf(['page', 'step', 'location', 'true'])
+  ariaCurrent: PropTypes.oneOf(["page", "step", "location", "true", "false"]),
 }
 
 NavLink.defaultProps = {
-  activeClassName: 'active',
-  ariaCurrent: 'true'
+  activeClassName: "active",
+  ariaCurrent: "true",
 }
 
 export default NavLink
